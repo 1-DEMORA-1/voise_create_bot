@@ -15,13 +15,13 @@ async def on_ready():
 
 @tasks.loop(seconds=10)
 async def update_status():
-    """Обновляет статус бота каждые 10 секунд."""
+
     total_members = sum(len(guild.members) for guild in bot.guilds)
     await bot.change_presence(activity=discord.Game(f'{total_members} участников'))
 
 @bot.event
 async def on_voice_state_update(member, before, after):
-    """Срабатывает, когда пользователь заходит или выходит из голосового канала."""
+
     if after.channel and after.channel.id == 1285898586927927327:
         # Создаем новый приватный канал
         overwrites = {
@@ -47,7 +47,7 @@ async def on_voice_state_update(member, before, after):
 
 @bot.event
 async def on_voice_state_update(member, before, after):
-    """Срабатывает, когда пользователь заходит или выходит из голосового канала."""
+
     if after.channel and after.channel.id == 1285898586927927327:
 
         overwrites = {
@@ -73,4 +73,5 @@ async def on_voice_state_update(member, before, after):
 
 
 TOKEN = 'Ваш токен'
+
 bot.run(TOKEN)
